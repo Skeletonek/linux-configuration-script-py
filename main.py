@@ -28,16 +28,16 @@ linux = distribution_chooser()
 clear()
 
 choice = ""
-while choice != "Y":
+while choice != "y":
     print("1. Choose what apps to install\n"
           "Y. Accept all chosen operations and proceed...")
     choice = input("Choice: ")
     if choice == "1":
-        app_choice = app_choser.choose_apps()
+        app_choice = app_choser.choose_category()
     clear()
 
 clear()
-final_configurator.configure(app_choice)
+final_configurator.configure(linux, app_choice)
 
 # As a test, perform system update
 # ret = os.system(f"sudo -S dnf update")  # TODO: Obfuscate password
