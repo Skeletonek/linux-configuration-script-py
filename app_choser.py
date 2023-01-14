@@ -51,16 +51,16 @@ def choose_apps(local_apps_list):
         clear()
         print("Choose app to install: ")
         for i in local_apps_list:
-            print(i, ". - ", local_apps_list[i], sep="")
+            print("🗹" if choice.__contains__(local_apps_list[i]) > 0 else " ",
+                  " ", i, ". - ", local_apps_list[i], sep="")
         print("Y. - Accept and exit")
-        print_choosen_apps()
         temp_choice = input("Choice: ")
 
         if temp_choice == "y":
             break
-        else:
+        elif temp_choice.isnumeric():
             temp_choice = int(temp_choice)
-        if choice.__contains__(local_apps_list[temp_choice]):
-            choice.remove(local_apps_list[temp_choice])
-        else:
-            choice.append(local_apps_list[temp_choice])
+            if choice.__contains__(local_apps_list[temp_choice]):
+                choice.remove(local_apps_list[temp_choice])
+            else:
+                choice.append(local_apps_list[temp_choice])

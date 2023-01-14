@@ -3,6 +3,7 @@ import getpass
 from colorama import Fore, Back, Style
 
 import app_choser
+import distro_specific_conf
 import final_configurator
 from clear import clear
 
@@ -15,6 +16,10 @@ def distribution_chooser():
           "4. Arch Linux", sep="")
     return int(input("Distribution: "))
 
+
+app_choice = []
+conf_choice = []
+update = False
 
 clear()
 print("Linux Post-Install Configuration Script\n\n"
@@ -29,15 +34,25 @@ clear()
 
 choice = ""
 while choice != "y":
-    print("1. Choose what apps to install\n"
-          "Y. Accept all chosen operations and proceed...")
+    print("🗹" if len(app_choice) > 0 else " ", " 1. Choose what apps to install\n",
+          "🗹" if len(conf_choice) > 0 else " ", " 2. Use distro-specific configurations\n",
+          "🗹" if update > 0 else " ", " 3. Perform system update\n",
+          "  Y. Accept all chosen operations and proceed...", sep="")
     choice = input("Choice: ")
     if choice == "1":
         app_choice = app_choser.choose_category()
+    elif choice == "2":
+        conf_choice = distro_specific_conf.choose_distribution()
+    elif choice == "3":
+        update = not update
     clear()
 
 clear()
-final_configurator.configure(linux, app_choice)
+final_configurator.configure(
+    linux,
+    app_choice,
+    conf_choice,
+    update)
 
 # As a test, perform system update
 # ret = os.system(f"sudo -S dnf update")  # TODO: Obfuscate password
