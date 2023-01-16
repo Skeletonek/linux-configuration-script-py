@@ -20,20 +20,32 @@ apps_list_audiovideo = {
 }
 
 apps_list_development = {
-    1: "firefox"
+    1: "geany",
+    2: "kate",
+    3: "kdevelop",
+    4: "monodevelop",
+    5: "python3-spyder",
+    6: "rstudio"
+
 }
 
 apps_list_education = {
-    1: "firefox"
+    1: "libreoffice-math"
 }
 
 apps_list_game = {
     1: "lutris",
-    2: "steam"
+    2: "steam",
 }
 
 apps_list_graphics = {
-    1: "firefox"
+    1: "gimp",
+    2: "inkscape",
+    3: "kolourpaint",
+    4: "krita",
+    5: "okular",
+    6: 'skanlite'
+
 }
 
 apps_list_network = {
@@ -48,9 +60,25 @@ apps_list_office = {
 }
 
 apps_list_system = {
-    1: "firefox"
+    1: "btop",
+    2: "dolphin",
+    3: "nautilus",
+    4: "thunar",
+    5: "nemo",
+    6: "fish",
+    7: "zsh",
+    8: "konsola",
+    9: "gnome-terminal",
+    10: "yakuake",
+    11: "timeshift",
+    12: "virtualbox"
 }
 
 apps_list_utility = {
-    1: "mc"
+    1: "ark",
+    2: "bitwarden",
+    3: "bottles",
+    4: "corectrl",
+    5: "mc",
+    6: "spectacle",
     }
