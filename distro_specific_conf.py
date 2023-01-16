@@ -4,8 +4,15 @@ import distro_specific_list_pretty
 choice = []
 
 
-def choose_distribution():
-    choose_configuration(distro_specific_list_pretty.fedora_configuration)
+def choose_distribution(linux):
+    if linux == 1:
+        choose_configuration(distro_specific_list_pretty.debian_configuration)
+    elif linux == 2:
+        choose_configuration(distro_specific_list_pretty.ubuntu_configuration)
+    elif linux == 3:
+        choose_configuration(distro_specific_list_pretty.fedora_configuration)
+    elif linux == 4:
+        choose_configuration(distro_specific_list_pretty.arch_configuration)
     return choice
 
 
@@ -17,10 +24,10 @@ def choose_configuration(local_conf_list):
             print("🗹" if choice.__contains__(i) > 0 else " ",
                   " ", i, ". - ", local_conf_list[i],
                   sep="")
-        print("  Y. - Accept and exit")
+        print("  E. - Return")
         temp_choice = input("Choice: ")
 
-        if temp_choice == "y":
+        if "eE".__contains__(temp_choice):
             break
         elif temp_choice.isnumeric():
             temp_choice = int(temp_choice)
