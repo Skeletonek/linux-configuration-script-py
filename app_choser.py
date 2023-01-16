@@ -18,10 +18,10 @@ def choose_category():
         print("Choose app category: ")
         for i in apps.categories_list:
             print(i, ". - ", apps.categories_list[i], sep="")
-        print("Y. - Accept and exit")
+        print("E. - Return")
         print_choosen_apps()
         temp_choice = input("Choice: ")
-        if temp_choice == "y":
+        if "eE".__contains__(temp_choice):
             break
         elif temp_choice == "1":
             choose_apps(apps.apps_list_audiovideo)
@@ -53,10 +53,10 @@ def choose_apps(local_apps_list):
         for i in local_apps_list:
             print("🗹" if choice.__contains__(local_apps_list[i]) > 0 else " ",
                   " ", i, ". - ", local_apps_list[i], sep="")
-        print("Y. - Accept and exit")
+        print("  E. - Return")
         temp_choice = input("Choice: ")
 
-        if temp_choice == "y":
+        if "eE".__contains__(temp_choice):
             break
         elif temp_choice.isnumeric():
             temp_choice = int(temp_choice)

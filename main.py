@@ -1,5 +1,3 @@
-import os
-import getpass
 from colorama import Fore, Back, Style
 
 import app_choser
@@ -32,27 +30,30 @@ print("Linux Post-Install Configuration Script\n\n"
 linux = distribution_chooser()
 clear()
 
-choice = ""
-while choice != "y":
+choice = " "
+while not "yYeE".__contains__(choice):
     print("🗹" if len(app_choice) > 0 else " ", " 1. Choose what apps to install\n",
           "🗹" if len(conf_choice) > 0 else " ", " 2. Use distro-specific configurations\n",
           "🗹" if update > 0 else " ", " 3. Perform system update\n",
-          "  Y. Accept all chosen operations and proceed...", sep="")
+          "------------------------------------------------\n",
+          "  Y. Accept all chosen operations and proceed\n",
+          "  E. Exit without applying any chosen operations", sep="")
     choice = input("Choice: ")
     if choice == "1":
         app_choice = app_choser.choose_category()
     elif choice == "2":
-        conf_choice = distro_specific_conf.choose_distribution()
+        conf_choice = distro_specific_conf.choose_distribution(linux)
     elif choice == "3":
         update = not update
     clear()
 
 clear()
-final_configurator.configure(
-    linux,
-    app_choice,
-    conf_choice,
-    update)
+if choice == ("y" or "Y"):
+    final_configurator.configure(
+        linux,
+        app_choice,
+        conf_choice,
+        update)
 
 # As a test, perform system update
 # ret = os.system(f"sudo -S dnf update")  # TODO: Obfuscate password
