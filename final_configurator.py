@@ -1,7 +1,7 @@
 import os
 import distro_specific_list
 import distro_specific_list_pretty
-from colorama import Fore, Back, Style
+from colorama import Fore, Back
 
 
 def install_apps(linux, apps):
@@ -12,6 +12,8 @@ def install_apps(linux, apps):
         command = "dnf install -y"
     elif linux == 4:
         command = "pacman -Sy"
+    else:
+        raise IndexError("Wrong Linux ID number! Is the distribution chosen correctly?")
     for i in apps:
         command += " " + i
     return os.system(command)
@@ -30,6 +32,8 @@ def system_configure(linux, configuration):
     elif linux == 4:
         commands = distro_specific_list.arch_configuration
         commands_pretty = distro_specific_list_pretty.arch_configuration
+    else:
+        raise IndexError("Wrong Linux ID number! Is the distribution chosen correctly?")
 
     for i in configuration:
         print(Fore.GREEN + commands_pretty[i])
@@ -47,12 +51,14 @@ def system_update(linux):
         command = "dnf update -y"
     elif linux == 4:
         command = "pacman -Syu"
+    else:
+        raise IndexError("Wrong Linux ID number! Is the distribution chosen correctly?")
     return os.system(command)
 
 
-def configure(linux, apps, configurations ,update):
+def configure(linux, apps, configurations, update):
     if len(apps) > 0:
-        print(Fore.GREEN + "Installing choosen apps..." + Fore.RESET)
+        print(Fore.GREEN + "Installing chosen apps..." + Fore.RESET)
         print(Back.WHITE + Fore.BLACK + "Return code:", install_apps(linux, apps))
         print(Back.RESET + Fore.RESET)
     if len(configurations) > 0:
