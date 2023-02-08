@@ -21,7 +21,7 @@ update = False
 
 clear()
 print("Linux Post-Install Configuration Script\n\n"
-      "Version: 9.02.23\n"
+      "Version: 23.2.9\n"
       "Author: Skeletonek (skeleton0199@gmail.com)\n\n",
       Back.RED + Fore.BLACK +
       "!!! This script must be run in su mode to complete all functions !!!",
